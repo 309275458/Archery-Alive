@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.yanzhenjie.andserver'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.archeryalive.game"
+        minSdk 24
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.yanzhenjie.andserver:api:2.1.10'
+    annotationProcessor 'com.yanzhenjie.andserver:processor:2.1.10'
+
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+
+
+    api 'com.google.android.gms:play-services-ads:22.0.0'
+    api 'com.appsflyer:af-android-sdk:6.9.0'
+    api 'com.android.installreferrer:installreferrer:2.2'
+    api 'com.tencent:mmkv-static:1.2.14'
+    api 'com.google.code.gson:gson:2.10'
+    def lifecycle_version = '2.5.1'
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+    api "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+
+}

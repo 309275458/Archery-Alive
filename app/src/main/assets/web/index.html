@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Avoid Dying Poki</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+<meta name="generator" content="Construct 3">
+
+	<link rel="manifest" href="appmanifest.json">
+	<link rel="apple-touch-icon" sizes="128x128" href="icons/icon-128.png">
+	<link rel="apple-touch-icon" sizes="256x256" href="icons/icon-256.png">
+	<link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+	<link rel="icon" type="image/png" href="icons/icon-512.png">
+
+<link rel="stylesheet" href="style.css">
+<!--    <script-->
+<!--        id="gamebridge-sdk"-->
+<!--        src="//sdk.enjoy4fun.com/v1/gamebridge.js"-->
+<!--        data-ad-frequency="30s"-->
+<!--        data-gameid="c9f565ursfeo976es5p0">-->
+<!--    </script>-->
+<!--    <script src="//sdk.enjoy4fun.com/v1/pk-sdk.js"></script>-->
+
+	<script id="game-sdk" type="text/javascript"
+			data-gameid="c8k6p0ursfeikq6ffbq0" src="https://sdk.enjoy4fun.com/v1/oversea-sdk.js"></script>
+
+
+</head>
+<body>
+<div id="fb-root"></div>
+	<script src="box2d.wasm.js"></script>
+	<noscript>
+		<div id="notSupportedWrap">
+			<h2 id="notSupportedTitle">This content requires JavaScript</h2>
+			<p class="notSupportedMessage">JavaScript appears to be disabled. Please enable it to view this content.</p>
+			<p class="notSupportedMessage">This game was created with Construct. <a href="https://www.construct.net/en">Make your own games online</a></p>
+		</div>
+	</noscript>
+	<script src="scripts/supportcheck.js"></script>
+	<script src="scripts/offlineclient.js"></script>
+	<script src="scripts/main.js"></script>
+
+<script type="text/javascript">
+
+	function initPoki()
+	{
+	   	PokiSDK.init().then(
+		    () => {
+		        // successfully initialized
+		        window.initapi = true;
+		        // continue to game
+		    }
+		).catch(
+		    () => {
+		        // initialized but the user has an adblock
+		         window.initapi = false;
+		         window.adcomplete = 1;
+		        // feel free to kindly ask the user to disable AdBlock, like forcing weird usernames or showing a sad face; be creative!
+		        // continue to the game
+		    }
+		);
+		PokiSDK.setDebug(false);
+	}
+
+	function startLoading()
+	{
+		//if(window.initapi)
+			PokiSDK.gameLoadingStart();
+	}
+	function endLoading()
+	{
+		//if(window.initapi)
+			PokiSDK.gameLoadingFinished();
+	}
+	function progressLoading(value)
+	{
+		//if(window.initapi)
+			PokiSDK.gameLoadingProgress(value);
+	}
+
+
+
+	function StartGame() {
+	}
+	function EndGame() {
+        PokiSDK.gameplayStart();
+	}
+
+
+	function happyTime1() {
+		PokiSDK.happyTime(0.1);
+	}
+	function happyTime2() {
+		PokiSDK.happyTime(0.3);
+	}
+	function happyTime3() {
+		PokiSDK.happyTime(0.5);
+	}
+	function happyTime4() {
+		PokiSDK.happyTime(1);
+	}
+
+
+	function requestAd()
+	{
+		if(window.initapi)
+		{
+			window.showad = 1;
+
+			PokiSDK.commercialBreak()
+			.then(
+			    () => { //you can also use a normal function here
+			        window.showad = 0;
+			        window.adcomplete = 1;
+			    }
+			);
+		}
+		else
+			window.adcomplete = 1;
+	}
+
+  	function GetAdState()
+	{
+		return window.showad;
+	}
+
+	function getComplete()
+	{
+		return window.adcomplete;
+	}
+	function resetComplete()
+	{
+		window.adcomplete = 0;
+	}
+startLoading();
+</script>
+</body>
+</html>

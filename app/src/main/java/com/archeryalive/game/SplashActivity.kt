@@ -19,7 +19,7 @@ class SplashActivity : BaseActivity() {
         progressBg.post { showProgress() }
         findViewById<View>(R.id.ivPrivacyPolicy).setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("https://sites.google.com/view/arrowerpuzzle/home")
+            intent.data = Uri.parse("https://sites.google.com/view/archery-alive/%E4%BD%8F%E5%AE%85")
             startActivity(intent)
         }
     }

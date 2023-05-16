@@ -67,7 +67,7 @@ class MainActivity : BaseActivity() {
         override fun rewardedBreak() {
             // 这里由web页面用户点击获取激励奖励等场景
             Log.e("Roy", "called rewardedBreak")
-            requestRewardAd()
+//            requestRewardAd()
         }
 
         override fun gameplayStart() {
@@ -93,7 +93,7 @@ class MainActivity : BaseActivity() {
         )
 
         container.addView(webView, params)
-        requestBanner()
+//        requestBanner()
     }
 
     private fun requestBanner() {
